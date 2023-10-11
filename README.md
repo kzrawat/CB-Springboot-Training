@@ -30,6 +30,9 @@
                 git init : Initalialize
                 git add <file-name>: Add to staging area
                 git commit <file-name>: Add to commit area
+                git remote add origin https://github.com/puneetvashisht/citibank-ms-config.git
+                git branch -M master
+                git push -u origin master
             
             * Github/BitBucket/Gitlabs
 
