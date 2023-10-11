@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cb.dto.Workout;
 
-@FeignClient(name="workout-service", url="http://localhost:8080")
+//@FeignClient(name="workout-service", url="http://localhost:8080")
+@FeignClient(name="workout-service")
 public interface WorkoutServiceProxy {
 	
 	@GetMapping(path="/api/v1/workouts/{id}")

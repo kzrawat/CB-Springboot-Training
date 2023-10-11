@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,9 @@ public class WorkoutController {
 	
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	@Value("${server.port}")
+	String port;
 	
 //	@RequestMapping(path="/employees", method= RequestMethod.POST)
 	@PostMapping("/")
@@ -61,6 +65,7 @@ public class WorkoutController {
 		ResponseEntity<Workout> re = null;
 		if(workoutFound.isPresent()) {
 			Workout workout = workoutFound.get();
+			workout.setPort(port);
 			re = new ResponseEntity<Workout>(workout, HttpStatus.OK);
 			return re;
 		}

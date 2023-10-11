@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Workout {
@@ -17,7 +18,16 @@ public class Workout {
 	int cbpm;
 	String description;
 	
+	@Transient
+	String port;
 	
+	
+	public String getPort() {
+		return port;
+	}
+	public void setPort(String port) {
+		this.port = port;
+	}
 	@ManyToOne(cascade = CascadeType.ALL)
 	Category category;
 	
