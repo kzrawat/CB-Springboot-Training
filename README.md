@@ -45,7 +45,7 @@
             - add dependency spring-cloud-starter-netflix-eureka-client
             - @EnableDiscoveryClient
         
-        Spring Config
+        Spring Config : Centralize configuration
             - Externalize --server.port=8085
         
             Git - 
@@ -63,6 +63,11 @@
                 - update properties file
         
 
+    Day 4 :
 
+        API Gateway : Front Filter (Authentication/Authroization, Log) : Cross-cutting concerns
+                - add dependency: spring-cloud-starter-gateway
+                - Route Configuration
+                - 
 
     
