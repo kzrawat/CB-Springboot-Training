@@ -14,8 +14,17 @@ public class Workout {
 	
 	String port;
 	
+	public Workout() {
+		
+	}
 	
-	
+	public Workout(int id, String title, int cbpm, String description) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.cbpm = cbpm;
+		this.description = description;
+	}
 	public String getPort() {
 		return port;
 	}

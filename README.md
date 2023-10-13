@@ -68,6 +68,32 @@
         API Gateway : Front Filter (Authentication/Authroization, Log) : Cross-cutting concerns
                 - add dependency: spring-cloud-starter-gateway
                 - Route Configuration
-                - 
+    
+    Day 5
+        Fault Tolerance : Hystrix (fallback method)
+                - add depedency: spring-cloud-starter-netflix-hystrix
+                - @EnableCircuitBreaker --> @EnableHystrix
+
+                @FallbackMethod
+        
+        Log Tracing
+                - add dependency on Lombok for easy access to logging
+                - slueth: add a unique id to a request: 
+                X send info to zipking server
+        Zipkin Server -> capture the logs
+
+        Spring Cloud Stream : Connect Messsage Middlewars (Kafka, RabbitMQ)
+            - Message Brokers : Guarantee Message Delivery
+            
+        Apache Kafka : 
+            1. # Start the ZooKeeper service
+                $ bin/zookeeper-server-start.sh config/zookeeper.properties
+            2. # Start the Kafka broker service * Default Port 9092
+            $ bin/kafka-server-start.sh config/server.properties
+            3. Create Topic
+            4. Write(Producer) and Read(Consumer)
+
+
+
 
     

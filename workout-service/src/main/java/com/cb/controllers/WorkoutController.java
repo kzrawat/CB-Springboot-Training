@@ -20,7 +20,10 @@ import com.cb.entities.Workout;
 import com.cb.repos.CategoryRepository;
 import com.cb.repos.WorkoutRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @RequestMapping("/api/v1/workouts")
 public class WorkoutController {
 	
@@ -60,6 +63,8 @@ public class WorkoutController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Workout> fetchAWorkout(@PathVariable("id") int workoutId){
+		
+		log.info("In workout service ..... " + workoutId);
 		
 		Optional<Workout> workoutFound = workoutRepository.findById(workoutId);
 		ResponseEntity<Workout> re = null;

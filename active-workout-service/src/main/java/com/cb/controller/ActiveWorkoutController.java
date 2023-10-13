@@ -23,9 +23,13 @@ import org.springframework.web.client.RestTemplate;
 import com.cb.dto.Workout;
 import com.cb.entities.ActiveWorkout;
 import com.cb.repos.ActiveWorkoutRepository;
+import com.cb.services.WorkoutService;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 @RestController
+@Slf4j
 @RequestMapping("/api/v1/activeworkouts")
 public class ActiveWorkoutController {
 	
@@ -33,7 +37,7 @@ public class ActiveWorkoutController {
 	ActiveWorkoutRepository activeWorkoutRepository;
 	
 	@Autowired
-	WorkoutServiceProxy workoutServiceProxy;
+	WorkoutService workoutService;
 	
 	
 	@PostMapping("/")
@@ -52,7 +56,9 @@ public class ActiveWorkoutController {
 	public ResponseEntity<ActiveWorkout> endWorkout(@PathVariable("id") int id) {
 		Optional<ActiveWorkout> activeWorkoutFound = activeWorkoutRepository.findById(id);
 		
-		System.out.println("ActiveWorkout is present" + activeWorkoutFound.isPresent());
+//		System.out.println("ActiveWorkout is present" + activeWorkoutFound.isPresent());
+		log.debug("ActiveWorkout is present" + activeWorkoutFound.isPresent());
+		log.info("ActiveWorkout is present" + activeWorkoutFound.isPresent());
 		
 		ResponseEntity<ActiveWorkout> re = null;
 		
@@ -86,9 +92,12 @@ public class ActiveWorkoutController {
 		ResponseEntity<ActiveWorkout> re = null;
 		if(activeWorkoutFound.isPresent()) {
 			System.out.println("---- active workout is present-------------");
+			log.debug("ActiveWorkout is present" + activeWorkoutFound.isPresent());
+			log.info("ActiveWorkout is present" + activeWorkoutFound.isPresent());
 			ActiveWorkout activeWorkout = activeWorkoutFound.get();
 			// Declarative .. tools provide Spring cloud -- openfeign
-			Workout workout = workoutServiceProxy.fetchWorkout(activeWorkout.getWorkoutId());
+//			Workout workout = workoutServiceProxy.fetchWorkout(activeWorkout.getWorkoutId());
+			Workout workout = workoutService.getWorkout(activeWorkout.getWorkoutId());
 			activeWorkout.setWorkout(workout);
 			
 			

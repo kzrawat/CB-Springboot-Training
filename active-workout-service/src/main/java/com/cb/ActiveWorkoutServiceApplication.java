@@ -8,6 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
+//@EnableHystrixDashboard
+//@EnableCircuitBreaker
 public class ActiveWorkoutServiceApplication {
 
 	public static void main(String[] args) {
